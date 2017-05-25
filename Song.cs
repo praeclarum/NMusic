@@ -324,7 +324,7 @@ namespace PlayMidi
 
 		static int PickBpm (Random r)
 		{
-			return 140 + (int)((r.NextDouble ()-0.5)*60);
+			return 100 + (int)((r.NextDouble ()-0.5)*60);
 		}
 
 		static int PickVel (Random r)
@@ -430,7 +430,7 @@ namespace PlayMidi
 
 		static Random r = new Random ();
 
-		public Song (MonoTouch.AudioUnit.AUGraph graph, int ioNode)
+		public Song (AudioUnit.AUGraph graph, int ioNode)
 		{
 			this.ins = new ArrangementInstruments (r, graph, ioNode);
 

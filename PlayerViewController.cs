@@ -2,13 +2,11 @@
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
-using MonoTouch;
-using MonoTouch.AudioToolbox;
-using MonoTouch.AudioUnit;
-using MonoTouch.CoreFoundation;
-using MonoTouch.CoreMidi;
-using MonoTouch.Foundation;
-using MonoTouch.UIKit;
+using AudioToolbox;
+using AudioUnit;
+using CoreMidi;
+using Foundation;
+using UIKit;
 using System.Threading;
 using Praeclarum.UI;
 
@@ -58,7 +56,7 @@ namespace PlayMidi
 				cs.Cancel ();
 				cs = null;
 			}
-			NSTimer.CreateScheduledTimer (1, () => {
+			NSTimer.CreateScheduledTimer (TimeSpan.FromSeconds(1), _ => {
 				cs = new CancellationTokenSource ();
 				PlayContinuouslyAsync (cs.Token);
 			});
@@ -331,8 +329,8 @@ namespace PlayMidi
 			}
 		}
 
-		[DllImport (Constants.AudioToolboxLibrary)]
-		static extern AudioUnitStatus MusicDeviceSysEx (IntPtr inUnit, IntPtr inData, uint inLength);
+		//[DllImport (Constants.AudioToolboxLibrary)]
+		//static extern AudioUnitStatus MusicDeviceSysEx (IntPtr inUnit, IntPtr inData, uint inLength);
 	}
 }
 

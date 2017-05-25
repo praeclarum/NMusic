@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
-using MonoTouch.AudioUnit;
-using MonoTouch.CoreFoundation;
-using MonoTouch.Foundation;
+using AudioUnit;
+using CoreFoundation;
+using Foundation;
 using System.Collections.Generic;
 using System.Threading;
 
@@ -103,7 +103,7 @@ namespace PlayMidi
 
 	public class Instrument
 	{
-		readonly AudioUnit samplerUnit;
+		readonly AudioUnit.AudioUnit samplerUnit;
 		int channel;
 
 		public readonly InstrumentInfo Info;
