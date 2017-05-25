@@ -18,7 +18,6 @@ namespace Lullabies
 	/// </summary>
 	public class PlayerViewController : UIViewController
 	{
-		AUGraph graph;
 		int mixNode;
 
 		UIButton nextButton;
@@ -58,38 +57,42 @@ namespace Lullabies
 				cs.Cancel ();
 				cs = null;
 			}
-			NSTimer.CreateScheduledTimer (TimeSpan.FromSeconds(1), _ => {
+			NSTimer.CreateScheduledTimer (TimeSpan.FromSeconds(1), async _ => {
 				cs = new CancellationTokenSource ();
-				PlayContinuouslyAsync (cs.Token);
+				await PlayContinuouslyAsync (cs.Token);
 			});
 		}
 
 		async Task PlayContinuouslyAsync (CancellationToken token)
 		{
-			for (;;) {
-				CreateAudioGraph ();
-				var song = new Song (graph, mixNode);
-				graph.Initialize ();
-				graph.Start ();
-				try {
-					await Task.Run (() => song.PlayAsync (token).Wait (token));
-				} finally {
-					graph.Stop ();
+			while (!token.IsCancellationRequested) {
+				using (var graph = CreateAudioGraph())
+				{
+					var song = new Song(graph, mixNode);
+					graph.Initialize();
+					graph.Start();
+					try
+					{
+						await Task.Run(() => song.PlayAsync(token).Wait(token));
+					}
+					catch (OperationCanceledException)
+					{
+					}
+					finally
+					{
+						graph.Stop();
+					}
 				}
-				graph.Dispose ();
-				graph = null;
 			}
 		}
 
-		void CreateAudioGraph ()
+		AUGraph CreateAudioGraph ()
 		{
-			graph = new AUGraph ();
+			var graph = new AUGraph ();
 
 			var ioNode = graph.AddNode (AudioComponentDescription.CreateOutput (AudioTypeOutput.Remote));
 			var mix = AudioComponentDescription.CreateMixer (AudioTypeMixer.MultiChannel);
 			mixNode = graph.AddNode (mix);
-
-
 
 			graph.ConnnectNodeInput (mixNode, 0, ioNode, 0);
 
@@ -101,7 +104,7 @@ namespace Lullabies
 //			mixUnit.SetParameter (AudioUnitParameterType.MultiChannelMixerVolume, 1, AudioUnitScopeType.Input, 1);
 			mixUnit.SetMaximumFramesPerSlice (4096, AudioUnitScopeType.Global, 0);
 
-			Console.WriteLine (mixUnit);
+			return graph;
 		}
 	}
 }

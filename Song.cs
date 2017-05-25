@@ -199,12 +199,13 @@ namespace Lullabies
 			}
 		}
 
-		public async Task PlayAsync (Instrument ins, CancellationToken token)
+		public Task PlayAsync (Instrument ins, CancellationToken token)
 		{
-			var t = PlayAllAsync (bass, ins, token);
-			PlayAllAsync (snare, ins, token);
-			PlayAllAsync (hiHat, ins, token);
-			await t;
+			return Task.WhenAll(
+				PlayAllAsync(bass, ins, token),
+				PlayAllAsync(snare, ins, token),
+				PlayAllAsync(hiHat, ins, token)
+			);
 		}
 
 		static async Task PlayAllAsync (IEnumerable<Playable> hiHat, Instrument ins, CancellationToken token)
@@ -405,13 +406,14 @@ namespace Lullabies
 			Percussion = new PercussionLine (Progression, r);
 		}
 
-		public async Task PlayAsync (bool melody1, bool melody2, Random r, CancellationToken token)
+		public Task PlayAsync (bool melody1, bool melody2, Random r, CancellationToken token)
 		{
-			var t = Progression.PlayAsync (ins.Changes, token);
-			Bassline.PlayAsync (ins.Bass, token);
+			var tasks = new List<Task>();
+			tasks.Add(Progression.PlayAsync (ins.Changes, token));
+			tasks.Add(Bassline.PlayAsync (ins.Bass, token));
 			//Percussion.PlayAsync (ins.Percussion, token);
 			if (melody1)
-				Melody.PlayAsync (ins.Melody, 0, token);
+				tasks.Add(Melody.PlayAsync (ins.Melody, 0, token));
 			if (melody2) {
 				var noteChange = 0;
 				if (melody1) {
@@ -419,9 +421,9 @@ namespace Lullabies
 					if (noteChange == 0)
 						noteChange = 12;
 				}
-				Melody.PlayAsync (ins.Melody2, noteChange, token);
+				tasks.Add(Melody.PlayAsync (ins.Melody2, noteChange, token));
 			}
-			await t;
+			return Task.WhenAll(tasks);
 		}
 	}
 
