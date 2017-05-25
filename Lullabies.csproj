@@ -113,9 +113,7 @@
   <ItemGroup>
     <BundleResource Include="Resources\requiem.mid" />
     <BundleResource Include="Resources\ChoriumRevA.sf2" />
-    <BundleResource Include="Resources\simpletest.mid" />
     <BundleResource Include="Resources\Gorts_Filters.sf2" />
-    <BundleResource Include="Resources\get_lucky.mid" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="LaunchScreen.storyboard" />
