@@ -319,12 +319,13 @@ namespace PlayMidi
 
 		static int PickKey (Random r)
 		{
-			return 60 + r.Next (24) - 12;
+			return 55 + r.Next (30) - 15;
+			//return 60 + r.Next (24) - 12;
 		}
 
 		static int PickBpm (Random r)
 		{
-			return 100 + (int)((r.NextDouble ()-0.5)*60);
+			return 80 + (int)((r.NextDouble ()-0.5)*60);
 		}
 
 		static int PickVel (Random r)
@@ -407,8 +408,8 @@ namespace PlayMidi
 		public async Task PlayAsync (bool melody1, bool melody2, Random r, CancellationToken token)
 		{
 			var t = Progression.PlayAsync (ins.Changes, token);
-//			Bassline.PlayAsync (ins.Bass, token);
-//			Percussion.PlayAsync (ins.Percussion, token);
+			Bassline.PlayAsync (ins.Bass, token);
+			//Percussion.PlayAsync (ins.Percussion, token);
 			if (melody1)
 				Melody.PlayAsync (ins.Melody, 0, token);
 			if (melody2) {
