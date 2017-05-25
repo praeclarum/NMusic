@@ -29,7 +29,8 @@ namespace Lullabies
 
 			nextButton = UIButton.FromType (UIButtonType.RoundedRect);
 			nextButton.SetTitle ("Next", UIControlState.Normal);
-			nextButton.SetTitleColor (UIColor.White, UIControlState.Normal);
+			nextButton.SetTitleColor (UIColor.FromHSB(60.0f / 360.0f, 0.5f, 1.0f), UIControlState.Normal);
+			nextButton.Font = UIFont.FromName ("Zapfino", 32);
 			nextButton.TouchUpInside += delegate {
 				Begin ();
 			};
@@ -46,6 +47,11 @@ namespace Lullabies
 //			PlayMidiSong ();
 
 //			await PlayDynamicSong ();
+		}
+
+		public override UIStatusBarStyle PreferredStatusBarStyle ()
+		{
+			return UIStatusBarStyle.LightContent;
 		}
 
 		CancellationTokenSource cs;
