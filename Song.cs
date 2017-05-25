@@ -4,7 +4,7 @@ using System.Linq;
 using System.Collections.Generic;
 using System.Threading;
 
-namespace PlayMidi
+namespace Lullabies
 {
 	public class Playable
 	{

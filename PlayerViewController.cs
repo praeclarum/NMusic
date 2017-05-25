@@ -10,7 +10,7 @@ using UIKit;
 using System.Threading;
 using Praeclarum.UI;
 
-namespace PlayMidi
+namespace Lullabies
 {
 	/// <summary>
 	/// A little class showing how to use iOS's AudioToolbox

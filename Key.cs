@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace PlayMidi
+namespace Lullabies
 {
 	public class Key
 	{
