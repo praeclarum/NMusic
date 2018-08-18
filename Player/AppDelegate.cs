@@ -6,7 +6,7 @@ using Foundation;
 using UIKit;
 using AVFoundation;
 
-namespace Lullabies
+namespace Player
 {
 	// The UIApplicationDelegate for the application. This class is responsible for launching the
 	// User Interface of the application, as well as listening (and optionally responding) to

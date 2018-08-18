@@ -5,7 +5,7 @@
 	<key>CFBundleDisplayName</key>
 	<string>Lullabies</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.kruegersystems.lullabies</string>
+	<string>com.kruegersystems.nmusic-player</string>
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
@@ -41,9 +41,9 @@
 	<array>
 		<string>audio</string>
 	</array>
-	<key>CFBundleName</key>
-	<string>Lullabies</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
+	<key>CFBundleName</key>
+	<string>Player</string>
 </dict>
 </plist>

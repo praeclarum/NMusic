@@ -5,7 +5,7 @@ using System.Linq;
 using Foundation;
 using UIKit;
 
-namespace Lullabies
+namespace Player
 {
 	public class Application
 	{

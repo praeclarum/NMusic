@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Lullabies
+namespace NMusic
 {
 	public class Key
 	{

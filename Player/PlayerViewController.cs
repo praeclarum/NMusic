@@ -9,8 +9,9 @@ using Foundation;
 using UIKit;
 using System.Threading;
 using Praeclarum.UI;
+using NMusic;
 
-namespace Lullabies
+namespace Player
 {
 	/// <summary>
 	/// A little class showing how to use iOS's AudioToolbox

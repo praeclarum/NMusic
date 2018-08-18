@@ -6,9 +6,9 @@
     <ProjectTypeGuids>{FEACFBD2-3405-455C-9665-78FE426C6842};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <ProjectGuid>{D9CC6165-EC26-4071-BF05-3A059F6B2366}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Lullabies</RootNamespace>
+    <RootNamespace>Player</RootNamespace>
     <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
-    <AssemblyName>Lullabies</AssemblyName>
+    <AssemblyName>Player</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhoneSimulator' ">
     <DebugSymbols>true</DebugSymbols>
@@ -112,11 +112,6 @@
     <Folder Include="Resources\" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\requiem.mid" />
-    <BundleResource Include="Resources\ChoriumRevA.sf2" />
-    <BundleResource Include="Resources\Gorts_Filters.sf2" />
-  </ItemGroup>
-  <ItemGroup>
     <InterfaceDefinition Include="LaunchScreen.storyboard" />
   </ItemGroup>
   <ItemGroup>
@@ -127,10 +122,13 @@
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
     <Compile Include="PlayerViewController.cs" />
-    <Compile Include="Instrument.cs" />
-    <Compile Include="Key.cs" />
-    <Compile Include="Song.cs" />
     <Compile Include="Layout.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\NMusic\NMusic.csproj">
+      <Project>{4AAB1AE8-D817-4DAA-9E34-F758A012EBC7}</Project>
+      <Name>NMusic</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>

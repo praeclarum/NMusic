@@ -7,7 +7,7 @@ using Foundation;
 using System.Collections.Generic;
 using System.Threading;
 
-namespace Lullabies
+namespace NMusic
 {
 	public enum PlayChordStyle
 	{
