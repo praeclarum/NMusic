@@ -1,6 +1,6 @@
-# Lullabies
+# NMusic
 
-**Lullabies** is a music generator for iOS using async methods and iOS midi synthesis.
+**NMusic** is a music generator for iOS using async methods and iOS midi synthesis.
 
 The key components are:
 
