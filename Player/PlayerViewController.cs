@@ -30,7 +30,7 @@ namespace Player
 			nextButton = UIButton.FromType (UIButtonType.RoundedRect);
 			nextButton.SetTitle ("Next", UIControlState.Normal);
 			nextButton.SetTitleColor (UIColor.FromHSB(60.0f / 360.0f, 0.5f, 1.0f), UIControlState.Normal);
-			nextButton.Font = UIFont.FromName ("Avenir-Next", 24);
+			nextButton.Font = UIFont.SystemFontOfSize (24);
 			nextButton.TouchUpInside += delegate {
 				Begin ();
 			};
